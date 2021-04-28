@@ -33,7 +33,6 @@ public class newAccActivity extends AppCompatActivity {
     private TextView toLoginText;
     private DatabaseReference databaseReference;
     private FirebaseAuth auth;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +42,13 @@ public class newAccActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 createUser();
+            }
+        });
+        toLoginText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), loginActivity.class));
+                finish();
             }
         });
     }
@@ -60,7 +66,7 @@ public class newAccActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Passwords do not match", Toast.LENGTH_SHORT).show();
             return;
         }
-        databaseReference = FirebaseDatabase.getInstance().getReference("SocialNetworkA").child("Users");
+        databaseReference = FirebaseDatabase.getInstance().getReference("SocialNetwork").child("Users");
         auth = FirebaseAuth.getInstance();
         auth.createUserWithEmailAndPassword(UserEmail,UserPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -81,7 +87,6 @@ public class newAccActivity extends AppCompatActivity {
             }
         });
     }
-
     private void configWidgets() {
         userName = findViewById(R.id.newAccUserName);
         userEmail = findViewById(R.id.newAccEmail);
