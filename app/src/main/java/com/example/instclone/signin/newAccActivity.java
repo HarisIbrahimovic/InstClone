@@ -33,6 +33,7 @@ public class newAccActivity extends AppCompatActivity {
     private TextView toLoginText;
     private DatabaseReference databaseReference;
     private FirebaseAuth auth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
