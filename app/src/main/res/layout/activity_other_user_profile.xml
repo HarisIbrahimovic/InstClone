@@ -52,16 +52,8 @@
         android:textColor="#555555"
         />
 
-        <TextView
-            android:layout_marginTop="15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Posts"
-            android:layout_gravity="center"
-            android:gravity="center"
-            />
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="10dp"
+        android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/otherPersonPostsRec"

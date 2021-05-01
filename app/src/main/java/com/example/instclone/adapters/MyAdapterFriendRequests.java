@@ -27,6 +27,7 @@ public class MyAdapterFriendRequests extends RecyclerView.Adapter<MyAdapterFrien
     private ArrayList<user> users;
     private Context context;
     private DatabaseReference databaseReference;
+    private DatabaseReference otherUser;
     private FirebaseAuth auth;
     private FirebaseUser user;
 
@@ -54,6 +55,8 @@ public class MyAdapterFriendRequests extends RecyclerView.Adapter<MyAdapterFrien
                 user = auth.getCurrentUser();
                 databaseReference = FirebaseDatabase.getInstance().getReference("SocialNetwork").child("Users").child(user.getUid()).child("FriendReq").child(User.getUserId());
                 databaseReference.removeValue();
+                otherUser = FirebaseDatabase.getInstance().getReference("SocialNetwork").child("Users").child(User.getUserId()).child("Friends").child(user.getUid());
+                otherUser.setValue(user.getUid());
                 databaseReference = FirebaseDatabase.getInstance().getReference("SocialNetwork").child("Users").child(user.getUid()).child("Friends");
                 databaseReference.child(User.getUserId()).setValue(User.getUserId());
                 Toast.makeText(context,"Accepted.",Toast.LENGTH_SHORT).show();

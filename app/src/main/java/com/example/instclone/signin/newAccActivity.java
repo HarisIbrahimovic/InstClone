@@ -61,6 +61,9 @@ public class newAccActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_acc);
         configWidgets();
+
+
+        //clickListeners
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +77,6 @@ public class newAccActivity extends AppCompatActivity {
                 finish();
             }
         });
-
         profileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -183,7 +185,6 @@ public class newAccActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Uri uri) {
                         imageUrl=uri.toString();
-
                     }
                 });
                 Toast.makeText(getApplicationContext(),"Done upload..",Toast.LENGTH_SHORT).show();

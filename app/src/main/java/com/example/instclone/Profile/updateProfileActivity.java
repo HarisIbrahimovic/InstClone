@@ -57,7 +57,7 @@ public class updateProfileActivity extends AppCompatActivity {
         setUpStuff();
         findCurrentUser();
 
-
+        //clickListeners
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

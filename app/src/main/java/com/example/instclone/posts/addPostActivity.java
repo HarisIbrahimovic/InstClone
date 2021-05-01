@@ -42,9 +42,7 @@ public class addPostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_post);
         configWidgets();
-
-
-
+         //clickListener
         postImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,8 +55,7 @@ public class addPostActivity extends AppCompatActivity {
                 createPost();
             }
         });
-
-
+        
     }
 
     private void createPost() {

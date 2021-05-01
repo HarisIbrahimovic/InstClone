@@ -57,7 +57,6 @@ public class myFriendsActivity extends AppCompatActivity {
                             }
                             myAdapterMyFriends.notifyDataSetChanged();
                         }
-
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
                         }

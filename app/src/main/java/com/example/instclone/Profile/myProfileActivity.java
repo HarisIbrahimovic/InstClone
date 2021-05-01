@@ -50,6 +50,7 @@ public class myProfileActivity extends AppCompatActivity {
 
 
 
+        //clickListener
         updateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

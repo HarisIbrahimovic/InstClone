@@ -34,7 +34,7 @@ public class loginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         configWidgets();
 
-
+        //clickListener
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

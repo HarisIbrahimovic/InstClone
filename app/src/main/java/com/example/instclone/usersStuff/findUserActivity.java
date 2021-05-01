@@ -41,30 +41,26 @@ public class findUserActivity extends AppCompatActivity implements MyAdapterUser
     }
 
     private void configWidgets() {
+        databaseReference = FirebaseDatabase.getInstance().getReference("SocialNetwork").child("Users");
         recyclerView= findViewById(R.id.userRecView);
         searchBar = findViewById(R.id.findUserSearchBar);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        auth = FirebaseAuth.getInstance();
+        users= new ArrayList<>();
+        //searchBarStuff
         searchBar.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
-
             @Override
             public void afterTextChanged(Editable s) {
                 filter(s.toString());
-
             }
         });
-        auth = FirebaseAuth.getInstance();
-        users= new ArrayList<>();
-        databaseReference = FirebaseDatabase.getInstance().getReference("SocialNetwork").child("Users");
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         myAdapterUsers = new MyAdapterUsers(getApplicationContext(),users,this);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -86,6 +82,7 @@ public class findUserActivity extends AppCompatActivity implements MyAdapterUser
         });
         recyclerView.setAdapter(myAdapterUsers);
     }
+
 
     private void filter(String text) {
         ArrayList<user> filteredList = new ArrayList<>();
