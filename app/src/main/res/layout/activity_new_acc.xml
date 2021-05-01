@@ -7,12 +7,12 @@
     android:layout_gravity="center"
     android:gravity="center"
     android:layout_height="match_parent"
-    android:background="#5ED687"
+    android:background="@drawable/bacdes"
     tools:context=".signin.newAccActivity">
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/addpic"
         android:layout_marginBottom="10dp"
         android:id="@+id/imageSignUp"
         android:elevation="5dp"

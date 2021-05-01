@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:layout_gravity="center"
     android:gravity="center"
-    android:background="#5ED687"
+    android:background="@drawable/bacdes"
     tools:context=".posts.addPostActivity">
     <ImageView
         android:layout_width="300dp"

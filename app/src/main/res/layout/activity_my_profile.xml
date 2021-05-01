@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:gravity="center"
-    android:background="#5ED687"
+    android:background="@drawable/bacdes"
     tools:context=".Profile.myProfileActivity">
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="100dp"
@@ -43,4 +43,23 @@
         android:id="@+id/updateProfileButton"
         android:elevation="5dp"
         />
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Requests"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/buttons"
+        android:id="@+id/requestButton"
+        android:elevation="5dp"
+        />
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="My Posts"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/buttons"
+        android:id="@+id/myPostsButton"
+        android:elevation="5dp"
+        />
+
 </LinearLayout>

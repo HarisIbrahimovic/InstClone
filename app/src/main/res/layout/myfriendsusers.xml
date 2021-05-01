@@ -2,52 +2,36 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
     android:background="@drawable/bacdes"
+    android:layout_margin="5dp"
     android:orientation="horizontal">
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_margin="10dp"
-        android:id="@+id/reqUserPic"
+        android:id="@+id/friendPicture"
         android:src="@mipmap/ic_launcher"
         />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="UserName"
+        android:layout_gravity="center"
         android:textColor="@color/white"
-        android:id="@+id/reqUserName"
-        android:layout_gravity="center"
+        android:id="@+id/friendUsername"
         />
-
     <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="100dp"
-        android:layout_height="35dp"
-        android:layout_marginLeft="25dp"
-        android:layout_gravity="center"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
+        android:gravity="center"
         android:textAlignment="center"
-        android:id="@+id/acceptButton"
-        android:text="Accept"
-        android:textColor="#F6F6F6"
-        android:gravity="center"
-        android:background="@drawable/buttons"
-        />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/declineButton"
-        android:layout_width="100dp"
-        android:layout_height="31dp"
         android:layout_gravity="center"
-        android:layout_marginLeft="10dp"
         android:background="@drawable/buttons"
-        android:textColor="#F6F6F6"
-        android:gravity="center"
+        android:layout_marginLeft="80dp"
         android:elevation="5dp"
-        android:text="Decline"
-        android:textAlignment="center"
-    />
-
-
+        android:text="DELETE"
+        android:textColor="@color/white"
+        android:id="@+id/deleteFriend"
+        />
 
 </LinearLayout>

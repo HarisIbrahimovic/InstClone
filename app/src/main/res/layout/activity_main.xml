@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    android:background="#5ED687"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:background="@drawable/bacdes"
     tools:context=".MainActivity">
 
     <TextView
@@ -13,22 +15,24 @@
         android:layout_height="40dp"
         android:layout_gravity="center"
        android:elevation="8dp"
-        android:background="#76D898"
+        android:background="@drawable/bacdes"
         android:gravity="center"
         android:text="Posts"
         android:textAlignment="center"
         android:textSize="20sp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/postsRecycleView"
-        />
+
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/postsRecycleView"
+            />
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/logoutButton"
             android:layout_width="match_parent"

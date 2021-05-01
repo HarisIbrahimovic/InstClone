@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -22,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class findUserActivity extends AppCompatActivity {
+public class findUserActivity extends AppCompatActivity implements MyAdapterUsers.touchListener{
     private RecyclerView recyclerView;
     private DatabaseReference databaseReference;
     private FirebaseAuth auth;
@@ -64,10 +65,11 @@ public class findUserActivity extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference("SocialNetwork").child("Users");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        myAdapterUsers = new MyAdapterUsers(getApplicationContext(),users);
+        myAdapterUsers = new MyAdapterUsers(getApplicationContext(),users,this);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                users.clear();
                 for(DataSnapshot snapshot1: snapshot.getChildren()){
                     user User = snapshot1.getValue(user.class);
                     if(!User.getUserId().equals(auth.getCurrentUser().getUid())){
@@ -93,5 +95,15 @@ public class findUserActivity extends AppCompatActivity {
             }
         }
         myAdapterUsers.filterList(filteredList);
+    }
+
+    @Override
+    public void onNoteClick(int position) {
+        user User = users.get(position);
+        Intent intent = new Intent(getApplicationContext(), otherUserProfileActivity.class);
+        intent.putExtra("userId",User.getUserId());
+        intent.putExtra("userName",User.getUserName());
+        intent.putExtra("imageUrl",User.getImageUrl());
+        startActivity(intent);
     }
 }

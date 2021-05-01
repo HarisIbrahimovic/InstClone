@@ -27,14 +27,14 @@ public class loginActivity extends AppCompatActivity {
     private Button loginButton;
     private TextView toSignUpText;
     private FirebaseAuth auth;
-    private DatabaseReference databaseReference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        databaseReference = FirebaseDatabase.getInstance().getReference("Tomic").child("Anto");
-        databaseReference.setValue("Test");
         configWidgets();
+
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,9 +60,12 @@ public class loginActivity extends AppCompatActivity {
         auth.signInWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                Toast.makeText(getApplicationContext(),"Welcome",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                finish();
+                if(task.isSuccessful()){
+                    Toast.makeText(getApplicationContext(),"Welcome",Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    finish();
+                }else  Toast.makeText(getApplicationContext(),"Problems...",Toast.LENGTH_SHORT).show();
+
             }
         });
     }

@@ -19,10 +19,12 @@ import java.util.ArrayList;
 public class MyAdapterUsers extends RecyclerView.Adapter<MyAdapterUsers.MyViewHolder> {
     Context context;
     ArrayList<user> users;
+    private touchListener TouchListener;
 
-    public MyAdapterUsers(Context context, ArrayList<user> users) {
+    public MyAdapterUsers(Context context, ArrayList<user> users,touchListener touchListener) {
         this.context = context;
         this.users = users;
+        this.TouchListener = touchListener;
     }
 
     @NonNull
@@ -30,7 +32,7 @@ public class MyAdapterUsers extends RecyclerView.Adapter<MyAdapterUsers.MyViewHo
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.user_item,parent,false);
 
-        return new MyViewHolder(view);
+        return new MyViewHolder(view,TouchListener);
     }
 
     @Override
@@ -51,11 +53,22 @@ public class MyAdapterUsers extends RecyclerView.Adapter<MyAdapterUsers.MyViewHo
         notifyDataSetChanged();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView userName = itemView.findViewById(R.id.searchUserName);
         ImageView imageView = itemView.findViewById(R.id.searchUserPicture);
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView,touchListener touchListener) {
             super(itemView);
+            itemView.setOnClickListener(this);
+            TouchListener = touchListener;
         }
+
+        @Override
+        public void onClick(View v) {
+            TouchListener.onNoteClick(getAdapterPosition());
+        }
+    }
+    public interface touchListener{
+        void onNoteClick(int position);
+
     }
 }

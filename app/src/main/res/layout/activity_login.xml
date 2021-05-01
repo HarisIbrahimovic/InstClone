@@ -5,20 +5,23 @@
     android:orientation="vertical"
     android:layout_gravity="center"
     android:gravity="center"
-    android:background="#5ED687"
+    android:background="@drawable/bacdes"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".signin.loginActivity">
     <ImageView
         android:layout_width="160dp"
         android:layout_height="160dp"
-        android:src="@drawable/download"
+        android:src="@drawable/ecology"
+        android:layout_marginBottom="10dp"
+        android:elevation="15dp"
         />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:background="@drawable/editext"
         android:hint="Email"
+        android:elevation="15dp"
         android:textAlignment="center"
         android:inputType="textEmailAddress"
         android:layout_margin="10dp"
@@ -28,6 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:hint="Password"
+        android:elevation="15dp"
         android:textAlignment="center"
         android:background="@drawable/editext"
         android:layout_margin="10dp"

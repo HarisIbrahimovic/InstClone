@@ -4,21 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bacdes"
     android:orientation="vertical"
-    tools:context=".usersStuff.findUserActivity">
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:background="@drawable/editext"
-        android:elevation="12dp"
-        android:hint="UserName"
-        android:textAlignment="center"
-        android:id="@+id/findUserSearchBar"/>
-
+    android:background="@drawable/bacdes"
+    tools:context=".Profile.requestsActivity">
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/userRecView"
+        android:layout_margin="10dp"
+        android:id="@+id/reqRecView"
         />
+
+
+
 </LinearLayout>
