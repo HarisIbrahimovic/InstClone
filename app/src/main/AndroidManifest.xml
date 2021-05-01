@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.InstClone">
-        <activity android:name=".signin.loginActivity"></activity>
+        <activity android:name=".usersStuff.otherUserProfileActivity"></activity>
+        <activity android:name=".usersStuff.findUserActivity" />
+        <activity android:name=".Profile.myProfileActivity" />
+        <activity android:name=".posts.addPostActivity" />
+        <activity android:name=".Profile.updateProfileActivity" />
+        <activity android:name=".signin.loginActivity" />
         <activity android:name=".signin.newAccActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

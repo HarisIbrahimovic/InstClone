@@ -3,89 +3,62 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_gravity="center"
     android:gravity="center"
-    android:layout_height="match_parent"
     android:background="#5ED687"
-    tools:context=".signin.newAccActivity">
+    tools:context=".Profile.updateProfileActivity">
     <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/updateProfilePic"
         android:layout_width="120dp"
+        android:layout_marginLeft="10dp"
         android:layout_height="120dp"
+        android:elevation="10dp"
         android:src="@mipmap/ic_launcher"
+        app:civ_border_width="0dp"
         android:layout_marginBottom="10dp"
-        android:id="@+id/imageSignUp"
-        android:elevation="5dp"
         />
     <EditText
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:textAlignment="center"
         android:background="@drawable/editext"
         android:hint="Username"
         android:elevation="5dp"
-        android:layout_margin="10dp"
-        android:id="@+id/newAccUserName"
+        android:id="@+id/updateProfileUsername"
         />
     <EditText
-        android:elevation="5dp"
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:textAlignment="center"
         android:background="@drawable/editext"
         android:hint="Email"
+        android:elevation="5dp"
         android:inputType="textEmailAddress"
-        android:layout_margin="10dp"
-        android:id="@+id/newAccEmail"
+        android:id="@+id/updateProfileEmail"
         />
     <EditText
-        android:elevation="5dp"
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:textAlignment="center"
         android:background="@drawable/editext"
         android:hint="Password"
-        android:layout_margin="10dp"
         android:inputType="textPassword"
-        android:id="@+id/newAccPassword"
-        />
-    <EditText
         android:elevation="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:textAlignment="center"
-        android:background="@drawable/editext"
-        android:hint="Confirm password"
-        android:layout_margin="10dp"
-        android:id="@+id/newAccCPassword"
-        android:inputType="textPassword"
-        />
-    <EditText
-        android:elevation="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:textAlignment="center"
-        android:background="@drawable/editext"
-        android:hint="Age"
-        android:inputType="number"
-        android:layout_margin="10dp"
-        android:id="@+id/newAccAge"
+        android:id="@+id/updateProfilePassword"
         />
     <androidx.appcompat.widget.AppCompatButton
+        android:layout_marginTop="10dp"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:text="submit"
         android:background="@drawable/buttons"
-        android:text="SIgn in"
-        android:id="@+id/signInButton"
-        android:elevation="5dp"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Already have an accout. Login here."
-        android:id="@+id/textToLogin"
+        android:id="@+id/updateSubmitButton"
         />
 
 </LinearLayout>

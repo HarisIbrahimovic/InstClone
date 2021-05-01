@@ -5,29 +5,40 @@
     android:orientation="vertical"
     android:layout_gravity="center"
     android:gravity="center"
+    android:background="#5ED687"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".signin.loginActivity">
+    <ImageView
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:src="@drawable/download"
+        />
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
+        android:background="@drawable/editext"
         android:hint="Email"
+        android:textAlignment="center"
         android:inputType="textEmailAddress"
         android:layout_margin="10dp"
         android:id="@+id/loginEmail"
         />
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:hint="Password"
+        android:textAlignment="center"
+        android:background="@drawable/editext"
         android:layout_margin="10dp"
         android:inputType="textPassword"
         android:id="@+id/loginPassword"
         />
     <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Login"
+        android:background="@drawable/buttons"
         android:id="@+id/loginButton"
         android:layout_margin="10dp"
         />

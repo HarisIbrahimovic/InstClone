@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:background="@drawable/postdesign"
+    android:orientation="horizontal">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_margin="10dp"
+        android:id="@+id/searchUserPicture"
+        android:src="@mipmap/ic_launcher"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UserName"
+        android:id="@+id/searchUserName"
+        android:layout_gravity="center"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="25dp"
+        android:layout_gravity="center"
+        android:text="Accept"
+        android:background="@drawable/buttons"
+        />
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="center"
+        android:text="Decline"
+        android:background="@drawable/buttons"
+        />
+
+
+
+</LinearLayout>

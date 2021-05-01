@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#5ED687"
+    android:orientation="vertical"
+
+    android:layout_height="match_parent"
+    tools:context=".usersStuff.otherUserProfileActivity">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_marginTop="10dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@mipmap/ic_launcher"
+        android:id="@+id/myProfilePic"
+        android:elevation="10dp"
+        android:layout_gravity="center"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        android:text="UserName"
+        android:id="@+id/personUserName"
+        android:layout_gravity="center"
+        />
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Add Friend"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/buttons"
+        android:id="@+id/addFriend"
+        android:elevation="5dp"
+        android:layout_gravity="center"
+        />
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Send Message"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/buttons"
+        android:id="@+id/updateProfileButton"
+        android:elevation="5dp"
+        android:layout_gravity="center"
+        />
+
+        <TextView
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Posts"
+            android:layout_gravity="center"
+            android:gravity="center"
+            />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/otherPersonPostsRec"
+        />
+
+
+</LinearLayout>

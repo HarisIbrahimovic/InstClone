@@ -1,18 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:background="#5ED687"
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+       android:elevation="8dp"
+        android:background="#76D898"
+        android:gravity="center"
+        android:text="Posts"
+        android:textAlignment="center"
+        android:textSize="20sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/postsRecycleView"
+        />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/logoutButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="15dp"
+            android:backgroundTint="@color/white"
+            android:contentDescription="TODO"
+            android:elevation="10dp"
+            android:src="@drawable/signoutpic"
+            app:fabCustomSize="50dp"
+            app:useCompatPadding="true" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/profileButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="75dp"
+            android:layout_marginLeft="15dp"
+            android:backgroundTint="@color/white"
+            android:contentDescription="TODO"
+            android:elevation="10dp"
+            android:src="@drawable/faceicon"
+            app:fabCustomSize="50dp"
+            app:useCompatPadding="true" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/messagesButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="135dp"
+            android:layout_marginLeft="15dp"
+            android:backgroundTint="@color/white"
+            android:contentDescription="TODO"
+            android:elevation="10dp"
+            android:src="@drawable/msgicon"
+            app:fabCustomSize="50dp"
+            app:useCompatPadding="true" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addPostButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="15dp"
+            android:backgroundTint="@color/white"
+            android:contentDescription="TODO"
+            android:elevation="10dp"
+            android:src="@drawable/createpic"
+            app:fabCustomSize="50dp"
+            app:useCompatPadding="true" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/searchButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="75dp"
+            android:backgroundTint="@color/white"
+            android:contentDescription="TODO"
+            android:elevation="10dp"
+            android:src="@drawable/search"
+            app:fabCustomSize="50dp"
+            app:useCompatPadding="true" />
+
+
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+
+
+
+
+</LinearLayout>

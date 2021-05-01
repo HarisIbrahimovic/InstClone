@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:background="#5ED687"
+    tools:context=".posts.addPostActivity">
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/addpic"
+        android:layout_marginBottom="20dp"
+        android:elevation="5dp"
+        android:id="@+id/addPostImage"
+        />
+    <EditText
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:hint="Add description"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        android:background="@drawable/editext"
+        android:id="@+id/addPostDesc"
+        android:elevation="5dp"
+        />
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:layout_marginTop="15dp"
+        android:elevation="5dp"
+        android:background="@drawable/buttons"
+        android:id="@+id/addPostButton"
+        />
+
+
+
+</LinearLayout>
