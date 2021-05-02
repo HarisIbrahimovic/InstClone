@@ -43,11 +43,11 @@ public class requestsActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 for(DataSnapshot snapshot1: snapshot.getChildren()){
-                    users.clear();
                     String UserId = snapshot1.getKey();
                     findUser.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            users.clear();
                             for(DataSnapshot snapshot11:snapshot.getChildren()){
                                 user User = snapshot11.getValue(user.class);
                                 if(User.getUserId().equals(UserId)){
@@ -64,7 +64,6 @@ public class requestsActivity extends AppCompatActivity {
                 }
                 myAdapterFriendRequests.notifyDataSetChanged();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 

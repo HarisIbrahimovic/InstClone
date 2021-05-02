@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.instclone.R;
 import com.example.instclone.adapters.MyAdapterPosts;
+import com.example.instclone.messaging.messagingActivity;
 import com.example.instclone.objects.post;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -68,6 +70,16 @@ public class otherUserProfileActivity extends AppCompatActivity {
                 }
             }
         });
+        messageUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), messagingActivity.class);
+                intent.putExtra("reciverId",UserId);
+                intent.putExtra("imageUrl",imageUrl);
+                intent.putExtra("reciverName",UserName);
+                startActivity(intent);
+            }
+        });
     }
 
     private void getPosts() {
@@ -104,6 +116,7 @@ public class otherUserProfileActivity extends AppCompatActivity {
         profileImage = findViewById(R.id.otherProfilePic);
         userName = findViewById(R.id.personUserName);
         addFriend = findViewById(R.id.addFriend);
+        messageUser = findViewById(R.id.sendMessageToUser);
         //auth stuff
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();

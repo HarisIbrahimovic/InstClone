@@ -37,15 +37,40 @@
         android:id="@+id/postImageItem"
         />
 
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_gravity="center"
+    >
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/like"
+        android:layout_margin="10dp"
+        android:id="@+id/likeImage"
+        />
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/comment"
+        android:id="@+id/postComments"
+        />
 
-        <TextView
-            android:layout_margin="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:text="This is a post Description"
-            android:textAlignment="center"
-            android:id="@+id/postDescItem"
-            />
+
+</LinearLayout>
+    <TextView
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_height="35dp"
+        android:text="This is a post Description"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:id="@+id/postDescItem"
+        />
+
 
 
 </LinearLayout>

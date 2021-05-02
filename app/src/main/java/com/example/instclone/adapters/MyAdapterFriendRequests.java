@@ -59,7 +59,7 @@ public class MyAdapterFriendRequests extends RecyclerView.Adapter<MyAdapterFrien
                 otherUser.setValue(user.getUid());
                 databaseReference = FirebaseDatabase.getInstance().getReference("SocialNetwork").child("Users").child(user.getUid()).child("Friends");
                 databaseReference.child(User.getUserId()).setValue(User.getUserId());
-                Toast.makeText(context,"Accepted.",Toast.LENGTH_SHORT).show();
+                Toast.makeText(context,"Request Accepted.",Toast.LENGTH_SHORT).show();
             }
         });
         holder.decline.setOnClickListener(new View.OnClickListener() {
@@ -69,9 +69,9 @@ public class MyAdapterFriendRequests extends RecyclerView.Adapter<MyAdapterFrien
                 user = auth.getCurrentUser();
                 databaseReference = FirebaseDatabase.getInstance().getReference("SocialNetwork").child("Users").child(user.getUid()).child("FriendReq").child(User.getUserId());
                 databaseReference.removeValue();
+                Toast.makeText(context,"Request declined.",Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
     @Override

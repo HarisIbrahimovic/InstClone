@@ -3,6 +3,7 @@ package com.example.instclone.signin;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -27,6 +28,7 @@ public class loginActivity extends AppCompatActivity {
     private Button loginButton;
     private TextView toSignUpText;
     private FirebaseAuth auth;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,15 +59,21 @@ public class loginActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Fill in the fields.",Toast.LENGTH_SHORT).show();
             return;
         }
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading..");
+        progressDialog.show();
         auth.signInWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(getApplicationContext(),"Welcome",Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    progressDialog.dismiss();
                     finish();
-                }else  Toast.makeText(getApplicationContext(),"Problems...",Toast.LENGTH_SHORT).show();
-
+                }else {
+                    Toast.makeText(getApplicationContext(), "Problems...", Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
+                }
             }
         });
     }

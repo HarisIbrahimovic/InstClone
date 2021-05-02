@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,8 +23,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 
 public class MyAdapterMyFriends extends RecyclerView.Adapter<MyAdapterMyFriends.MyViewHolder> {
-    Context context;
-    ArrayList<user> users;
+    private Context context;
+    private ArrayList<user> users;
 
     public MyAdapterMyFriends(Context context, ArrayList<user> users) {
         this.context = context;
@@ -49,6 +50,8 @@ public class MyAdapterMyFriends extends RecyclerView.Adapter<MyAdapterMyFriends.
                 FirebaseUser user = auth.getCurrentUser();
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("SocialNetwork").child("Users").child(user.getUid()).child("Friends").child(User.getUserId());
                 databaseReference.removeValue();
+                Toast.makeText(context,"Friend removed",Toast.LENGTH_SHORT).show();
+                users.remove(User);
             }
         });
 

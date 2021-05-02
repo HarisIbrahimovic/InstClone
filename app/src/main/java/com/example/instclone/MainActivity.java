@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import com.example.instclone.Profile.myProfileActivity;
+import com.example.instclone.Profile.recentChatsActivity;
 import com.example.instclone.adapters.MyAdapterPosts;
 import com.example.instclone.objects.post;
 import com.example.instclone.posts.addPostActivity;
@@ -75,6 +76,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), findUserActivity.class));
             }
         });
+        messagesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), recentChatsActivity.class));
+            }
+        });
     }
 
     private void checkFriends() {
@@ -122,17 +129,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setUpWidgets() {
+        //widgets
         searchButton = findViewById(R.id.searchButton);
         signOutButton = findViewById(R.id.logoutButton);
         messagesButton = findViewById(R.id.messagesButton);
         addPostButton = findViewById(R.id.addPostButton);
         myProfileButton = findViewById(R.id.profileButton);
         recyclerView = findViewById(R.id.postsRecycleView);
-
+        messagesButton = findViewById(R.id.messagesButton);
+        //firebasestuff
         auth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference("SocialNetwork").child("Posts");
         findFriends = FirebaseDatabase.getInstance().getReference("SocialNetwork").child("Users").child(auth.getCurrentUser().getUid()).child("Friends");
-
+        //recViewStuff
         posts = new ArrayList<>();
         friendsId = new ArrayList<>();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);

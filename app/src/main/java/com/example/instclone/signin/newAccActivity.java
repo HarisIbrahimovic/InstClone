@@ -55,7 +55,7 @@ public class newAccActivity extends AppCompatActivity {
     private String imageUrl;
     private FirebaseAuth auth;
     private Uri imageUri;
-
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,6 +93,8 @@ public class newAccActivity extends AppCompatActivity {
         String CPassword = cPassword.getText().toString();
         String Age = age.getText().toString();
         if(inputTests(UserName,UserEmail,UserPassword,Age,CPassword,imageUrl)==1)return;
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading...");
         auth.createUserWithEmailAndPassword(UserEmail,UserPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {

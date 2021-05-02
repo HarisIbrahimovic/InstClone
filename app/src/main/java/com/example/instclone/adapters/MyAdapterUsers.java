@@ -17,8 +17,8 @@ import com.example.instclone.objects.user;
 import java.util.ArrayList;
 
 public class MyAdapterUsers extends RecyclerView.Adapter<MyAdapterUsers.MyViewHolder> {
-    Context context;
-    ArrayList<user> users;
+    private Context context;
+    private ArrayList<user> users;
     private touchListener TouchListener;
 
     public MyAdapterUsers(Context context, ArrayList<user> users,touchListener touchListener) {

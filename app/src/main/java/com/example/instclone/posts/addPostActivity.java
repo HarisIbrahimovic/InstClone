@@ -55,7 +55,7 @@ public class addPostActivity extends AppCompatActivity {
                 createPost();
             }
         });
-        
+
     }
 
     private void createPost() {

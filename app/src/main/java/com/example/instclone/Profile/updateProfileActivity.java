@@ -67,7 +67,7 @@ public class updateProfileActivity extends AppCompatActivity {
         profileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                chosePicture();
             }
         });
 
@@ -141,6 +141,8 @@ public class updateProfileActivity extends AppCompatActivity {
         userName = findViewById(R.id.updateProfileUsername);
         profileImage = findViewById(R.id.updateProfilePic);
         submitButton = findViewById(R.id.updateSubmitButton);
+        firebaseStorage = FirebaseStorage.getInstance();
+        storageReference =firebaseStorage.getReference();
         findUser = FirebaseDatabase.getInstance().getReference("SocialNetwork").child("Users");
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
@@ -152,9 +154,7 @@ public class updateProfileActivity extends AppCompatActivity {
         startActivityForResult(intent,1);
     }
 
-
-
-    @Override
+   @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode ==1 &&resultCode ==RESULT_OK && data!=null &&data.getData()!=null){
