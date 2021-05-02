@@ -108,7 +108,9 @@ public class messagingActivity extends AppCompatActivity {
         sendButton = findViewById(R.id.sendButton);
         recyclerView = findViewById(R.id.recyclerViewMess);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+        linearLayoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(linearLayoutManager);
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
         checkMessages = FirebaseDatabase.getInstance().getReference("SocialNetwork").child("Messages");

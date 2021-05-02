@@ -40,6 +40,7 @@ public class findUserActivity extends AppCompatActivity implements MyAdapterUser
         configWidgets();
     }
 
+
     private void configWidgets() {
         databaseReference = FirebaseDatabase.getInstance().getReference("SocialNetwork").child("Users");
         recyclerView= findViewById(R.id.userRecView);
@@ -62,6 +63,7 @@ public class findUserActivity extends AppCompatActivity implements MyAdapterUser
             }
         });
         myAdapterUsers = new MyAdapterUsers(getApplicationContext(),users,this);
+        //recViewShowUsers
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

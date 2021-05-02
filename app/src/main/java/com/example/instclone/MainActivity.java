@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         setUpWidgets();
         checkFriends();
         showPosts();
+
         //clickListeners
         signOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
