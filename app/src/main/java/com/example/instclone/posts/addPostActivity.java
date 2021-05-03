@@ -65,6 +65,8 @@ public class addPostActivity extends AppCompatActivity {
         HashMap<String, String> newPost = new HashMap<>();
         newPost.put("imageUrl", imageUrl);
         newPost.put("userId", FirebaseAuth.getInstance().getCurrentUser().getUid());
+        newPost.put("userImageUrl",getIntent().getStringExtra("userImageUrl"));
+        newPost.put("userName",getIntent().getStringExtra("userName"));
         newPost.put("postId", randomKey);
         newPost.put("description",description);
         databaseReference.child(randomKey).setValue(newPost).addOnSuccessListener(new OnSuccessListener<Void>() {

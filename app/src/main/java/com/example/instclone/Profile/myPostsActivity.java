@@ -37,6 +37,7 @@ public class myPostsActivity extends AppCompatActivity {
         findPosts.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                posts.clear();
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()){
                     post Post = dataSnapshot.getValue(post.class);
                     if(Post.getUserId().equals(auth.getCurrentUser().getUid())){

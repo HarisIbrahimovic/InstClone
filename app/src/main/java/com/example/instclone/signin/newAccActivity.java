@@ -107,9 +107,11 @@ public class newAccActivity extends AppCompatActivity {
                 databaseReference.child(auth.getCurrentUser().getUid()).setValue(newUser).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                            Toast.makeText(getApplicationContext(),"Welcome",Toast.LENGTH_SHORT).show();
+                        if(task.isSuccessful()) {
+                            Toast.makeText(getApplicationContext(), "Welcome", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             finish();
+                        }else Toast.makeText(getApplicationContext(),"Email taken",Toast.LENGTH_SHORT).show();
                     }
                 });
             }

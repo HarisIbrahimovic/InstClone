@@ -5,6 +5,16 @@ public class post {
     private String userId;
     private String postId;
     private String description;
+    private String userImageUrl;
+    private String userName;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getUserImageUrl() {
+        return userImageUrl;
+    }
 
     public String getImageUrl() {
         return imageUrl;

@@ -18,6 +18,7 @@ import com.example.instclone.Profile.myProfileActivity;
 import com.example.instclone.Profile.recentChatsActivity;
 import com.example.instclone.adapters.MyAdapterPosts;
 import com.example.instclone.objects.post;
+import com.example.instclone.objects.user;
 import com.example.instclone.posts.addPostActivity;
 import com.example.instclone.signin.loginActivity;
 import com.example.instclone.signin.newAccActivity;
@@ -42,12 +43,15 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private DatabaseReference findFriends;
     private ArrayList<String> friendsId;
-
+    private String userImageUrl;
+    private String userName;
+    private DatabaseReference findMe;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         checkUser();
+        getUser();
         setUpWidgets();
         checkFriends();
         showPosts();
@@ -68,7 +72,10 @@ public class MainActivity extends AppCompatActivity {
         addPostButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), addPostActivity.class));
+                Intent intent = new Intent(getApplicationContext(),addPostActivity.class);
+                intent.putExtra("userImageUrl",userImageUrl);
+                intent.putExtra("userName",userName);
+                startActivity(intent);
             }
         });
         searchButton.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +88,28 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), recentChatsActivity.class));
+            }
+        });
+    }
+
+    private void getUser() {
+        findMe = FirebaseDatabase.getInstance().getReference("SocialNetwork").child("Users");
+        findMe.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot:snapshot.getChildren()){
+                    user User =  dataSnapshot.getValue(user.class);
+                    if(User.getUserId().equals(auth.getCurrentUser().getUid())){
+                        userImageUrl = User.getImageUrl();
+                        userName = User.getUserName();
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }

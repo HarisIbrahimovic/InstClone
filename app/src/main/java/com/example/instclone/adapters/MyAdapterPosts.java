@@ -56,16 +56,16 @@ public class MyAdapterPosts extends RecyclerView.Adapter<MyAdapterPosts.MyViewHo
         final int[] num = {2};
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
-
         //checkIfUserLikedPost
         ref =  FirebaseDatabase.getInstance().getReference("SocialNetwork").child("Posts").child(Post.getPostId()).child("Likes");
         ref.child("1").setValue("1");
-        ref.addValueEventListener(new ValueEventListener() {
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.hasChild(user.getUid())&&num[0]!=1){
                     holder.likeButton.setImageResource(R.drawable.liked);
                 }else if(num[0]==2){
+                    holder.likeButton.setImageResource(R.drawable.like);
                     num[0] =1;
                 }
             }
@@ -78,22 +78,8 @@ public class MyAdapterPosts extends RecyclerView.Adapter<MyAdapterPosts.MyViewHo
         //setUpStuff
         holder.description.setText(Post.getDescription());
         Glide.with(context).load(Post.getImageUrl()).into(holder.postImage);
-        ref = FirebaseDatabase.getInstance().getReference("SocialNetwork").child("Users").child(Post.getUserId());
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                RequestOptions options = new RequestOptions();
-                options.centerCrop();
-                user User = snapshot.getValue(user.class);
-                Glide.with(context).load(User.getImageUrl()).apply(options).into(holder.ownerImage);
-                holder.userName.setText(User.getUserName());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        Glide.with(context).load(Post.getUserImageUrl()).into(holder.ownerImage);
+        holder.userName.setText(Post.getUserName());
 
         //LikeOrDislikePost
         holder.likeButton.setOnClickListener(new View.OnClickListener() {
@@ -102,6 +88,7 @@ public class MyAdapterPosts extends RecyclerView.Adapter<MyAdapterPosts.MyViewHo
                 ref =  FirebaseDatabase.getInstance().getReference("SocialNetwork").child("Posts").child(Post.getPostId());
                 if(num[0]==1){
                     ref.child("Likes").child(user.getUid()).setValue(user.getUid());
+                    holder.likeButton.setImageResource(R.drawable.liked);
                 }else{
                     ref.child("Likes").child(user.getUid()).removeValue();
                     holder.likeButton.setImageResource(R.drawable.like);
