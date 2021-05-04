@@ -136,6 +136,10 @@ public class newAccActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Password too short", Toast.LENGTH_SHORT).show();
             return 1;
         }
+        if(!UserEmail.contains("@")){
+            Toast.makeText(getApplicationContext(), "Inavalid Email", Toast.LENGTH_SHORT).show();
+            return 1;
+        }
         return 0;
     }
 
