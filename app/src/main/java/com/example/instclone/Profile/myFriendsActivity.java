@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class myFriendsActivity extends AppCompatActivity {
@@ -39,6 +40,7 @@ public class myFriendsActivity extends AppCompatActivity {
     }
 
     private void showFriends() {
+        ArrayList<String> usersIds = new ArrayList<>();
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -50,7 +52,9 @@ public class myFriendsActivity extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             for(DataSnapshot snapshot11:snapshot.getChildren()){
                                 user User = snapshot11.getValue(user.class);
+                                if(usersIds.contains(User.getUserId()))break;
                                 if(User.getUserId().equals(userId)){
+                                    usersIds.add(User.getUserId());
                                     users.add(User);
                                     break;
                                 }

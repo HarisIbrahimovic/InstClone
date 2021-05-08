@@ -56,12 +56,12 @@ public class newAccActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private Uri imageUri;
     private ProgressDialog progressDialog;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_acc);
         configWidgets();
-
 
         //clickListeners
         signInButton.setOnClickListener(new View.OnClickListener() {

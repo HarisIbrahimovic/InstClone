@@ -50,6 +50,8 @@ public class MyAdapterMyFriends extends RecyclerView.Adapter<MyAdapterMyFriends.
                 FirebaseUser user = auth.getCurrentUser();
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("SocialNetwork").child("Users").child(user.getUid()).child("Friends").child(User.getUserId());
                 databaseReference.removeValue();
+                databaseReference = FirebaseDatabase.getInstance().getReference("SocialNetwork").child("Users").child(User.getUserId()).child("Friends").child(user.getUid());
+                databaseReference.removeValue();
                 Toast.makeText(context,"Friend removed",Toast.LENGTH_SHORT).show();
                 users.remove(User);
             }

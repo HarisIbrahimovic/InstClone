@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
     private void getUser() {
         findMe = FirebaseDatabase.getInstance().getReference("SocialNetwork").child("Users");
         findMe.addValueEventListener(new ValueEventListener() {
@@ -109,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
