@@ -32,22 +32,24 @@ import java.util.ArrayList;
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 public class MyAdapterPosts extends RecyclerView.Adapter<MyAdapterPosts.MyViewHolder> {
+    private touchListener TouchListener;
     private ArrayList<post> posts;
     private Context context;
     private DatabaseReference ref;
     private FirebaseAuth auth;
     private FirebaseUser user;
 
-    public MyAdapterPosts(ArrayList<post> posts, Context context) {
+    public MyAdapterPosts(ArrayList<post> posts, Context context, touchListener TouchListener) {
         this.posts = posts;
         this.context = context;
+        this.TouchListener = TouchListener;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.post_item,parent,false);
-        return new MyViewHolder(view);
+        return new MyViewHolder(view,TouchListener);
     }
 
     @Override
@@ -116,15 +118,26 @@ public class MyAdapterPosts extends RecyclerView.Adapter<MyAdapterPosts.MyViewHo
         return posts.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView postImage = itemView.findViewById(R.id.postImageItem);
         ImageView ownerImage = itemView.findViewById(R.id.postUserImage);
         TextView description = itemView.findViewById(R.id.postDescItem);
         TextView userName=  itemView.findViewById(R.id.postUserName);
         ImageView likeButton = itemView.findViewById(R.id.likeImage);
         ImageView commentButton = itemView.findViewById(R.id.postComments);
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView, touchListener touchListener) {
             super(itemView);
+            itemView.setOnClickListener(this);
+            TouchListener = touchListener;
+        }
+
+        @Override
+        public void onClick(View v) {
+            TouchListener.onNoteClick(getAdapterPosition());
         }
     }
+public interface touchListener{
+    void onNoteClick(int position);
+
+}
 }

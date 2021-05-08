@@ -28,47 +28,54 @@ public class requestsActivity extends AppCompatActivity {
     private MyAdapterFriendRequests myAdapterFriendRequests;
     private ArrayList<user> users;
     private DatabaseReference findUser;
+    private ArrayList<String> usersIds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_requests);
         configWidgets();
+        findRequests();
         showRequests();
     }
 
-    private void showRequests() {
+    private void findRequests() {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                for(DataSnapshot snapshot1: snapshot.getChildren()){
-                    String UserId = snapshot1.getKey();
-                    findUser.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            users.clear();
-                            for(DataSnapshot snapshot11:snapshot.getChildren()){
-                                user User = snapshot11.getValue(user.class);
-                                if(User.getUserId().equals(UserId)){
-                                    users.add(User);
-                                    break;
-                                }
-                            }
-                            myAdapterFriendRequests.notifyDataSetChanged();
-                        }
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                        }
-                    });
+                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    String UserId = dataSnapshot.getValue(String.class);
+                    usersIds.add(UserId);
                 }
-                myAdapterFriendRequests.notifyDataSetChanged();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
+    }
+
+    private void showRequests() {
+        findUser.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                users.clear();
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    user User = dataSnapshot.getValue(user.class);
+                    if(usersIds.contains(User.getUserId())){
+                        users.add(User);
+                    }
+                }
+                myAdapterFriendRequests.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         recyclerView.setAdapter(myAdapterFriendRequests);
     }
 
@@ -82,5 +89,6 @@ public class requestsActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         myAdapterFriendRequests = new MyAdapterFriendRequests(users,getApplicationContext());
+        usersIds = new ArrayList<>();
     }
 }

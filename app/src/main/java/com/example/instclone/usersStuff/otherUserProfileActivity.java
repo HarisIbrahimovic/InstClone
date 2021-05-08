@@ -28,7 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class otherUserProfileActivity extends AppCompatActivity {
+public class otherUserProfileActivity extends AppCompatActivity implements MyAdapterPosts.touchListener{
     private ImageView profileImage;
     private TextView userName;
     private Button addFriend, messageUser;
@@ -131,7 +131,7 @@ public class otherUserProfileActivity extends AppCompatActivity {
         userName.setText(UserName);
         //recViewStuff
         posts = new ArrayList<>();
-        myAdapterPosts = new MyAdapterPosts(posts,getApplicationContext());
+        myAdapterPosts = new MyAdapterPosts(posts,getApplicationContext(),this);
         recyclerView = findViewById(R.id.otherPersonPostsRec);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setReverseLayout(true);
@@ -157,6 +157,11 @@ public class otherUserProfileActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+
+    }
+
+    @Override
+    public void onNoteClick(int position) {
 
     }
 }

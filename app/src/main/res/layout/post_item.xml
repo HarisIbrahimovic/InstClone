@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@drawable/postdes"
     android:layout_margin="2dp"
     android:layout_gravity="center"
-    android:layout_height="wrap_content">
+    android:layout_height="570dp">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
@@ -20,56 +21,67 @@
             android:id="@+id/postUserImage"
             android:src="@mipmap/ic_launcher"
             />
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="UserName"
-            android:layout_marginTop="30dp"
-            android:id="@+id/postUserName"
-            />
+            android:orientation="vertical">
+            <TextView
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="UserName"
+                android:textColor="@color/black"
+                android:id="@+id/postUserName"
+                />
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:textColor="@color/black"
+                android:text="This is a post Description"
+                android:textAlignment="center"
+                android:id="@+id/postDescItem"
+                />
+        </LinearLayout>
+
     </LinearLayout>
-    <ImageView
-
-        android:layout_width="match_parent"
-        android:layout_height="450dp"
-        android:layout_gravity="center"
-        android:adjustViewBounds="true"
-        android:id="@+id/postImageItem"
-        />
-
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_gravity="center"
-    >
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/like"
-        android:layout_margin="10dp"
-        android:id="@+id/likeImage"
-        />
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="10dp"
-        android:src="@drawable/comment"
-        android:id="@+id/postComments"
-        />
 
 
-</LinearLayout>
-    <TextView
-        android:layout_margin="5dp"
-        android:layout_width="match_parent"
-        android:layout_gravity="center"
-        android:layout_height="35dp"
-        android:text="This is a post Description"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:id="@+id/postDescItem"
-        />
+        <ImageView
+            android:id="@+id/postImageItem"
+            android:layout_width="match_parent"
+            android:layout_height="420dp"
+            android:layout_gravity="center"
+            android:layout_margin="-1dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/likedes"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginBottom="100dp"
+            >
+
+            <ImageView
+                android:id="@+id/likeImage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/like" />
+
+            <ImageView
+                android:id="@+id/postComments"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:contentDescription="TODO"
+                android:src="@drawable/comment" />
+        </LinearLayout>
+
+
+
 
 
 

@@ -34,7 +34,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MyAdapterPosts.touchListener {
     private FirebaseAuth auth;
     private FloatingActionButton searchButton, myProfileButton, signOutButton, addPostButton, messagesButton;
     private RecyclerView recyclerView;
@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
         linearLayoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
-        myAdapterPosts = new MyAdapterPosts(posts,getApplicationContext());
+        myAdapterPosts = new MyAdapterPosts(posts,getApplicationContext(),this);
     }
 
     private void checkUser() {
@@ -191,5 +191,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), loginActivity.class));
             finish();
         }
+    }
+
+    @Override
+    public void onNoteClick(int position) {
+
     }
 }

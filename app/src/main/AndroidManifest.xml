@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.InstClone">
-        <activity android:name=".posts.commentsActivity"></activity>
+        <activity android:name=".posts.configPostActivity"></activity>
+        <activity android:name=".posts.commentsActivity" />
         <activity android:name=".messaging.messagingActivity" />
         <activity android:name=".Profile.recentChatsActivity" />
         <activity android:name=".Profile.myPostsActivity" />

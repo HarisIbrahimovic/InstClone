@@ -30,48 +30,49 @@ public class myFriendsActivity extends AppCompatActivity {
     private DatabaseReference findUser;
     private FirebaseAuth auth;
     private FirebaseUser user;
+    private ArrayList<String> friendsIds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_friends);
         setUpWidgets();
+        getFriends();
         showFriends();
     }
 
-    private void showFriends() {
-        ArrayList<String> usersIds = new ArrayList<>();
+    private void getFriends() {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                users.clear();
-                for(DataSnapshot snapshot1 : snapshot.getChildren()){
-                    String userId = snapshot1.getKey();
-                    findUser.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for(DataSnapshot snapshot11:snapshot.getChildren()){
-                                user User = snapshot11.getValue(user.class);
-                                if(usersIds.contains(User.getUserId()))break;
-                                if(User.getUserId().equals(userId)){
-                                    usersIds.add(User.getUserId());
-                                    users.add(User);
-                                    break;
-                                }
-                            }
-                            myAdapterMyFriends.notifyDataSetChanged();
-                        }
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                        }
-                    });
-                    myAdapterMyFriends.notifyDataSetChanged();
+                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    String UserId = dataSnapshot.getValue(String.class);
+                    friendsIds.add(UserId);
                 }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
+        });
+    }
 
+    private void showFriends() {
+        findUser.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                users.clear();
+                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    user User = dataSnapshot.getValue(user.class);
+                    if(friendsIds.contains(User.getUserId())){
+                        users.add(User);
+                    }
+                }
+                myAdapterMyFriends.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
         });
         recyclerView.setAdapter(myAdapterMyFriends);
     }
@@ -86,6 +87,7 @@ public class myFriendsActivity extends AppCompatActivity {
         myAdapterMyFriends = new MyAdapterMyFriends(getApplicationContext(),users);
         databaseReference = FirebaseDatabase.getInstance().getReference("SocialNetwork").child("Users").child(user.getUid()).child("Friends");
         findUser =FirebaseDatabase.getInstance().getReference("SocialNetwork").child("Users");
+        friendsIds = new ArrayList<>();
 
     }
 }

@@ -7,19 +7,9 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:gravity="center"
-    android:background="@drawable/bacdes"
+    android:background="@drawable/likeshape"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-       android:elevation="8dp"
-        android:background="@drawable/bacdes"
-        android:gravity="center"
-        android:text="Posts"
-        android:textAlignment="center"
-        android:textSize="20sp" />
 
 
 
@@ -36,8 +26,9 @@
             android:id="@+id/logoutButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
+            android:layout_gravity="bottom|end"
             android:layout_margin="15dp"
+
             android:backgroundTint="@color/white"
             android:contentDescription="TODO"
             android:elevation="10dp"
@@ -48,9 +39,9 @@
             android:id="@+id/profileButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="75dp"
-            android:layout_marginLeft="15dp"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="135dp"
+            android:layout_marginRight="15dp"
             android:backgroundTint="@color/white"
             android:contentDescription="TODO"
             android:elevation="10dp"
@@ -61,9 +52,9 @@
             android:id="@+id/messagesButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="135dp"
-            android:layout_marginLeft="15dp"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="195dp"
+            android:layout_marginRight="15dp"
             android:backgroundTint="@color/white"
             android:contentDescription="TODO"
             android:elevation="10dp"
@@ -75,7 +66,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
-            android:layout_margin="15dp"
+
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="75dp"
             android:backgroundTint="@color/white"
             android:contentDescription="TODO"
             android:elevation="10dp"
@@ -87,8 +80,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
+            android:layout_marginBottom="255dp"
             android:layout_marginRight="15dp"
-            android:layout_marginBottom="75dp"
             android:backgroundTint="@color/white"
             android:contentDescription="TODO"
             android:elevation="10dp"
