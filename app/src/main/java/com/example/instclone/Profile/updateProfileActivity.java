@@ -55,8 +55,6 @@ public class updateProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_update_profile);
         setUpWidgets();
         setUpStuff();
-        findCurrentUser();
-
         //clickListeners
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,8 +68,6 @@ public class updateProfileActivity extends AppCompatActivity {
                 chosePicture();
             }
         });
-
-
     }
 
     private void setUpStuff() {
@@ -94,7 +90,6 @@ public class updateProfileActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private void changeUser() {
         String newEmail = email.getText().toString();
@@ -127,10 +122,6 @@ public class updateProfileActivity extends AppCompatActivity {
             return 1;
         }
         return 0;
-    }
-
-    private void findCurrentUser() {
-
     }
 
     private void setUpWidgets() {
