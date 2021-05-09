@@ -50,7 +50,7 @@ public class updateProfileActivity extends AppCompatActivity {
     private Uri imageUri;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_profile);
         setUpWidgets();
@@ -86,17 +86,13 @@ public class updateProfileActivity extends AppCompatActivity {
                         userName.setText(currentUser.getUserName());
                         Glide.with(getApplicationContext()).load(currentUser.getImageUrl()).into(profileImage);
                         break;
-
                     }
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
-
     }
 
 
@@ -111,6 +107,8 @@ public class updateProfileActivity extends AppCompatActivity {
         changedUser.put("userEmail",newEmail);
         changedUser.put("userPassword",newPassword);
         changedUser.put("imageUrl",imageUrl);
+        user.updateEmail(newEmail);
+        user.updatePassword(newPassword);
         findUser.child(user.getUid()).setValue(changedUser).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
@@ -178,7 +176,6 @@ public class updateProfileActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Uri uri) {
                         imageUrl=uri.toString();
-
                     }
                 });
                 Toast.makeText(getApplicationContext(),"Done upload..",Toast.LENGTH_SHORT).show();

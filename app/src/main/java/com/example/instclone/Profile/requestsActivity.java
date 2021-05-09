@@ -48,10 +48,8 @@ public class requestsActivity extends AppCompatActivity {
                     usersIds.add(UserId);
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
     }
@@ -69,13 +67,10 @@ public class requestsActivity extends AppCompatActivity {
                 }
                 myAdapterFriendRequests.notifyDataSetChanged();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
-
         recyclerView.setAdapter(myAdapterFriendRequests);
     }
 
